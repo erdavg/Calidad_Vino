@@ -3,17 +3,32 @@ getwd()
 setwd("C:/Users/erdav/Documents/Rstudio/Vino_Discriminante")
 data <- read.csv("winequality_red.csv")
 
+head(data)
+data$
+summary(data)
+
 class(data$quality)
 data$quality <- as.character(data$quality)
 
-summary(data)
+colnames(data)
 
-# Vector de nombres de variables
-nombres_variables <- c("fixed.acidity", "volatile.acidity", "citric.acid")
+nombres_variables <- c("fixed.acidity", "volatile.acidity", "citric.acid", 
+                       "residual.sugar", "chlorides", "free.sulfur.dioxide", 
+                       "total.sulfur.dioxide", "density", "pH")
 
-# Bucle for para generar y mostrar los histogramas
+# Iteración para generar histogramas
 for (nombre in nombres_variables) {
-  # Generar el histograma
-  hist(data[[nombre]], main = nombre)
+  # Generar el histograma utilizando ggplot
+  p <- ggplot(data, aes(x = .data[[nombre]])) +
+    geom_histogram(binwidth = 0.5, fill = "blue", color = "white") +
+    labs(x = nombre, y = "Frequency") +
+    ggtitle(nombre)
+  
+  # Mostrar el histograma con el título
+  print(p)
+  
+  # Pausa de 5 segundos entre cada histograma
+  Sys.sleep(2)
 }
+
 
