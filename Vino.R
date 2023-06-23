@@ -19,7 +19,7 @@ variables <- c("fixed.acidity", "volatile.acidity", "citric.acid",
 # Iteración para generar histogramas
 for (variable in variables) {
   # Generar el histograma utilizando ggplot
-  p <- ggplot(data, aes(x = .data[[nombre]])) +
+  p <- ggplot(data, aes(x = .data[[variable]])) +
     geom_histogram(binwidth = 0.5, fill = "blue", color = "white") +
     labs(x = nombre, y = "Frequency") +
     ggtitle(variable)
