@@ -12,17 +12,17 @@ data$quality <- as.character(data$quality)
 
 colnames(data)
 
-nombres_variables <- c("fixed.acidity", "volatile.acidity", "citric.acid", 
+variables <- c("fixed.acidity", "volatile.acidity", "citric.acid", 
                        "residual.sugar", "chlorides", "free.sulfur.dioxide", 
                        "total.sulfur.dioxide", "density", "pH")
 
 # Iteración para generar histogramas
-for (nombre in nombres_variables) {
+for (variable in variables) {
   # Generar el histograma utilizando ggplot
   p <- ggplot(data, aes(x = .data[[nombre]])) +
     geom_histogram(binwidth = 0.5, fill = "blue", color = "white") +
     labs(x = nombre, y = "Frequency") +
-    ggtitle(nombre)
+    ggtitle(variable)
   
   # Mostrar el histograma con el título
   print(p)
